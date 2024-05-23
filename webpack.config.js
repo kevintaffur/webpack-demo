@@ -2,6 +2,7 @@ const path = require("path");
 const yaml = require("yamljs");
 const toml = require("toml");
 const json5 = require("json5");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -55,5 +56,13 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "index.html",
+      filename: "index.html",
+      inject: "head",
+      scriptLoading: "defer"
+    })
+  ]
 }
